@@ -42,18 +42,19 @@ public static void sauvegarderJSON(Map<String,Evenement> evenements, String fich
 //
 //    writer.withAttribute("type","Evenement");
 //    writer.writeValue(new File(fichier), evenements);
-    mapper.writerFor(new TypeReference<Map<String,Evenement>>() {
-    }).withAttribute("type","Evenement").writeValue(new File("evenements.json"),evenements);
+    mapper.writerFor(new TypeReference<Map<String, Evenement>>() {})
+            .withDefaultPrettyPrinter()
+            .writeValue(new File(fichier), evenements);
 }
 
     public static Map<String,Evenement> chargerJSON(String fichier) throws IOException {
-        File file=new File(fichier);
-        if (!file.exists())
-            return new HashMap<>();
-//        ObjectReader reader = mapper.readerFor(
-//                mapper.getTypeFactory().constructCollectionType(List.class, Evenement.class)
-//        );
-        return mapper.readValue(file,new TypeReference<Map<String,Evenement>>(){});
+        File file = new File(fichier);
+        if (!file.exists()) return new HashMap<>();
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+
+        return mapper.readValue(file, new TypeReference<Map<String, Evenement>>() {});
     }
 
 }

@@ -25,7 +25,7 @@ public abstract class Evenement {
     protected LocalDateTime date;
     protected String lieu;
     protected int capaciteMax;
-    public abstract void ajouterParticipant() throws CapaciteMaxAtteinteException;
+    public abstract void ajouterParticipant(Participant p) throws CapaciteMaxAtteinteException;
     public abstract void annuler();
     public abstract void afficherDetails();
 

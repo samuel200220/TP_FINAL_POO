@@ -15,9 +15,10 @@ public class Conference extends Evenement implements EvenementObservable{
     }
     public Conference(){}
 
-    @Override
-    public void ajouterParticipant() throws CapaciteMaxAtteinteException {
 
+    @Override
+    public void ajouterParticipant(Participant p) throws CapaciteMaxAtteinteException {
+        intervenants.add(p);
     }
 
     @Override

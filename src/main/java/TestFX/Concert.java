@@ -36,9 +36,10 @@ public class Concert extends Evenement implements EvenementObservable{
         notifierObservateurs("📢 Le concert '" + nom + "' a été déplacé à : " + lieu);
     }
 
-    @Override
-    public void ajouterParticipant() throws CapaciteMaxAtteinteException {
 
+    @Override
+    public void ajouterParticipant(Participant p) throws CapaciteMaxAtteinteException {
+        observateurs.add(p);
     }
 
     public void annuler() {

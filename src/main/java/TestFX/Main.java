@@ -12,22 +12,7 @@ public class Main {
         Participant p2 = new Participant("P02", "Bob", "bob@email.com");
 
         // Créer le concert
-        Conference conf = new Conference() {
-            @Override
-            public void ajouterParticipant() {
-
-            }
-
-            @Override
-            public void annuler() {
-
-            }
-
-            @Override
-            public void afficherDetails() {
-
-            }
-        };
+        Conference conf = new Conference();
         conf.id = "C1";
         conf.nom = "IA 2025";
         conf.date = LocalDateTime.now();
@@ -36,22 +21,7 @@ public class Main {
         conf.setTheme("Intelligence Artificielle");
         conf.intervenants = Arrays.asList(p1, p2);
 
-        Concert concert = new Concert() {
-            @Override
-            public void ajouterParticipant() {
-
-            }
-
-            @Override
-            public void annuler() {
-
-            }
-
-            @Override
-            public void afficherDetails() {
-
-            }
-        };
+        Concert concert = new Concert();
         concert.id = "M1";
         concert.nom = "Rock Night";
         concert.date = LocalDateTime.now().plusDays(5);
@@ -76,6 +46,17 @@ public class Main {
 //        for (Evenement e : reloaded) {
 //            System.out.println("📄 Rechargé : " + e.nom + " à " + e.lieu);
 //        }
+        for (Map.Entry<String, Evenement> entry : reloaded.entrySet()) {
+            String id = entry.getKey();
+            Evenement e = entry.getValue();
+
+            System.out.println("📌 ID : " + id);
+            System.out.println("📄 Nom : " + e.nom);
+            System.out.println("📍 Lieu : " + e.lieu);
+            System.out.println("📆 Date : " + e.date);
+            System.out.println("🎭 Type : " + e.getClass().getSimpleName());
+            System.out.println("---------------------------");
+        }
 
     }
 }
